@@ -69,15 +69,13 @@ function App() {
   const cartCtx = {
     items: shoppingCart.items,
     addItemToCart: handleAddItemToCart,
+    updateItemQuantity: handleUpdateCartItemQuantity,
   }
 
   return (
     <CartContext.Provider value={cartCtx}>
-      <Header
-        cart={shoppingCart}
-        onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
-      />
-      <Shop onAddItemToCart={handleAddItemToCart} />
+      <Header cart={shoppingCart} />
+      <Shop />
     </CartContext.Provider>
   )
 }
