@@ -1,11 +1,14 @@
-import { useRef } from 'react'
+import { useContext, useRef } from 'react'
 
 import CartModal from './CartModal.jsx'
+import { CartContext } from '../store/shoppig-cart-context.jsx'
 
 export default function Header({ cart }) {
   const modal = useRef()
 
-  const cartQuantity = cart.items.length
+  const { items } = useContext(CartContext)
+
+  const cartQuantity = items.length
 
   function handleOpenCartClick() {
     modal.current.open()
@@ -26,7 +29,7 @@ export default function Header({ cart }) {
     <>
       <CartModal
         ref={modal}
-        cartItems={cart.items}
+        cartItems={items}
         title='Your Cart'
         actions={modalActions}
       />
